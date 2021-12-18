@@ -1,13 +1,13 @@
-extern { 
-    fn appendNumberToBody(x: u32);
-    fn alert(x: u32);
+extern crate wasm_bindgen;
+
+use wasm_bindgen::prelude::*;
+
+#[wasm_bindgen(module = "domUtils.js")]
+extern {
+    fn appendStringToBody(s: &str);
 }
 
-
-#[no_mangle]
-pub extern fn run() {
-    unsafe {
-        appendNumberToBody(42);
-        alert(5)
-    }
+#[wasm_bindgen]
+pub fn run() {
+    appendStringToBody("Hello World");
 }
